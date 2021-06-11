@@ -43,6 +43,10 @@ ul.examples {
     @apply bg-cool-gray-300;
   }
 
+  button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
   img {
     @apply w-10;
   }
