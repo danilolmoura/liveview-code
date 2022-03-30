@@ -4,7 +4,6 @@ defmodule LiveViewStudioWeb.LightLive do
   def mount(_params, _session, socket) do
     # set initial state of brightness to 10
     socket = assign(socket, :brightness, 10)
-    IO.inspect(socket)
     {:ok, socket}
   end
 
@@ -36,9 +35,15 @@ defmodule LiveViewStudioWeb.LightLive do
       <button phx-click="on">
         <img src="images/light-on.svg">
       </button>
+
+      <button phx-click="random-brightness">
+        SHOW ANSWER
+      </button>
     </div>
     """
   end
+
+  def random_number(), do: Enum.random(1..100)
 
   @spec handle_event(<<_::16>>, any, map) :: {:noreply, map}
   def handle_event("on", _unsigned_params, socket) do
@@ -59,6 +64,12 @@ defmodule LiveViewStudioWeb.LightLive do
 
   def handle_event("down", _unsigned_params, socket) do
     socket = update(socket, :brightness, &(&1 - 10))
+    {:noreply, socket}
+  end
+
+
+  def handle_event("random-brightness", _unsigned_params, socket) do
+    socket = update(socket, :brightness, fn _ -> random_number() end)
     {:noreply, socket}
   end
 
