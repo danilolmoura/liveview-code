@@ -61,4 +61,10 @@ defmodule LiveViewStudioWeb.LightLive do
     socket = update(socket, :brightness, &(&1 - 10))
     {:noreply, socket}
   end
+
+  # mout initializes the state of liveview process by assign values to the socket
+  # render render a view with a "brightness" param and it has four bottons
+  # It also has handle_events calllback for each inbound event, this callbacks change the state of socket by assign or update
+
+  # WHENEVER the state of the socket changes render is automatically called
 end
