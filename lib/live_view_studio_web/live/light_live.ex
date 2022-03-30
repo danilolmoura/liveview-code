@@ -18,8 +18,47 @@ defmodule LiveViewStudioWeb.LightLive do
         <span style="width: <%= @brightness %>%">
           <%= @brightness %>%
         </span>
-      </span>
+      </div>
+
+      <button phx-click="off">
+        <img src="images/light-off.svg">
+      </button>
+
+
+      <button phx-click="down">
+        <img src="images/down.svg">
+      </button>
+
+      <button phx-click="up">
+        <img src="images/up.svg">
+      </button>
+
+      <button phx-click="on">
+        <img src="images/light-on.svg">
+      </button>
     </div>
     """
+  end
+
+  @spec handle_event(<<_::16>>, any, map) :: {:noreply, map}
+  def handle_event("on", _unsigned_params, socket) do
+    socket = assign(socket, :brightness, 100)
+    {:noreply, socket}
+  end
+
+  @spec handle_event(<<_::16>>, any, map) :: {:noreply, map}
+  def handle_event("off", _unsigned_params, socket) do
+    socket = assign(socket, :brightness, 0)
+    {:noreply, socket}
+  end
+
+  def handle_event("up", _unsigned_params, socket) do
+    socket = update(socket, :brightness, &(&1 + 10))
+    {:noreply, socket}
+  end
+
+  def handle_event("down", _unsigned_params, socket) do
+    socket = update(socket, :brightness, &(&1 - 10))
+    {:noreply, socket}
   end
 end
