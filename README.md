@@ -23,3 +23,10 @@ This app was generated using:
 ```sh
 mix phx.new live_view_studio --live
 ```
+
+
+## Light controller project
+
+1. Visit [`localhost:4000/light`](http://localhost:4000/light) from your browser.
+
+![Example working](/assets/static/images/light-live-working.gif)
