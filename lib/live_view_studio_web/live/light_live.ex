@@ -38,15 +38,16 @@ defmodule LiveViewStudioWeb.LightLive do
       </button>
 
       <button phx-click="random-brightness">
-        SHOW ANSWER
+        Light Me Up!
       </button>
     </div>
     """
   end
 
+  @spec random_number :: integer
   def random_number(), do: Enum.random(1..100)
 
-  @spec handle_event(<<_::16>>, any, map) :: {:noreply, map}
+  @spec handle_event(String.t(), map, Phoenix.LiveView.Socket.t()) :: {:noreply, Phoenix.LiveView.Socket.t()}
   def handle_event("on", _unsigned_params, socket) do
     IO.puts "ON #{inspect(self())}"
 
@@ -54,7 +55,6 @@ defmodule LiveViewStudioWeb.LightLive do
     {:noreply, socket}
   end
 
-  @spec handle_event(<<_::16>>, any, map) :: {:noreply, map}
   def handle_event("off", _unsigned_params, socket) do
     socket = assign(socket, :brightness, 0)
     {:noreply, socket}
