@@ -5,7 +5,6 @@ defmodule LiveViewStudio.Stores do
 
     list_stores()
     |> Enum.filter(&(&1.zip == zip))
-    |> IO.inspect(label: "result")
   end
 
   def search_by_city(city) do
@@ -20,7 +19,7 @@ defmodule LiveViewStudio.Stores do
         street: "312 Odilon de Araújo",
         phone_number: "(21) 2222-0000",
         city: "Rio de Janeiro, RJ",
-        zip: "20780330",
+        zip: "20775160",
         open: true,
         hours: "8am - 10pm M-F"
       },
@@ -29,7 +28,7 @@ defmodule LiveViewStudio.Stores do
         street: "301 Vaz de Caminha",
         phone_number: "(21) 2222-1111",
         city: "Rio de Janeiro, RJ",
-        zip: "20775160",
+        zip: "20780330",
         open: true,
         hours: "9am - 11pm M-F"
       },
