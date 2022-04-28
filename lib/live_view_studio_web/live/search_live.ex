@@ -81,7 +81,11 @@ defmodule LiveViewStudioWeb.SearchLive do
         {:noreply, socket}
 
       stores ->
-        socket = assign(socket, stores: stores, loading: false)
+        socket =
+          socket
+          |> clear_flash()
+          |> assign(stores: stores, loading: false)
+
         {:noreply, socket}
     end
   end
