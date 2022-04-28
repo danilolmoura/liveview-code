@@ -22,6 +22,7 @@ defmodule LiveViewStudioWeb.Router do
     live "/license", LicenseLive
     live "/sales-dashboard", SalesDashboardLive
     live "/search", SearchLive
+    live "/flight", FlightLive
 
     get "/sales", SalesController, :index
 
